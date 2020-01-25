@@ -1,0 +1,7 @@
+127.0.0.1 - - [25/Jan/2020:15:29:05 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [25/Jan/2020:15:29:06 +0900] "GET /jsp14_bike/index.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [25/Jan/2020:15:29:08 +0900] "GET /jsp14_bike/bike.do?command=second HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [25/Jan/2020:15:29:08 +0900] "GET /jsp14_bike/bike02.jsp HTTP/1.1" 200 360
+0:0:0:0:0:0:0:1 - - [25/Jan/2020:15:29:08 +0900] "GET /jsp14_bike/resources/js/bike02.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [25/Jan/2020:15:29:08 +0900] "GET /jsp14_bike/resources/json/bike.json HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [25/Jan/2020:15:29:09 +0900] "POST /jsp14_bike/bike.do?command=second_db HTTP/1.1" 200 4
