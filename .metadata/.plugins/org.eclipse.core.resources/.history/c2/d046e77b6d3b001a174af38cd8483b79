@@ -1,0 +1,40 @@
+package com.answer.dao;
+
+import java.util.List;
+
+import com.answer.dto.AnswerDTO;
+
+public interface AnswerDAO {
+	String SELECT_LIST_SQL = " SELECT * FROM ANSWERBOARD ORDER BY GROUPNO DESC, GROUPSEQ ";
+	String SELECT_ONE_SQL = " SELECT * FROM ANSWERBOARD WHERE BOARDNO = ? ";
+	String INSERT_SQL = " INSERT INTO ANSWERBOARD VALUES(BOARDNOSEQ.NEXTVAL, GROUPNOSEQ.NEXTVAL, 1, 0, ?,?,?, SYSDATE) ";
+	String INSERT_SUB_SQL = 
+			" INSERT INTO ANSWERBOARD " + 
+			" VALUES( " + 
+			"	BOARDNOSEQ.NEXTVAL, " + 
+			"	(SELECT GROUPNO FROM ANSWERBOARD WHERE BOARDNO = ?), " + 
+			"	(SELECT GROUPSEQ FROM ANSWERBOARD WHERE BOARDNO = ?) + 1, " + 
+			"	(SELECT TITLETAB FROM ANSWERBOARD WHERE BOARDNO = ?) + 1, " + 
+			"	?, " + 
+			"	?, " + 
+			"	?, " + 
+			"	SYSDATE " + 
+			" ) ";
+	String UPDATE_FOR_SUB_SQL = "";
+	String UPDATE_SQL = " UPDATE ANSWERBOARD SET TITLE = ?, CONTENT = ? WHERE BOARDNO = ? ";
+	String DELETE_SQL = " DELETE FROM ANSWERBOARD WHERE BOARDNO = ? ";
+
+	public List<AnswerDTO> selectList();
+
+	public AnswerDTO selectOne(int BOARDNO);
+
+	public int insert(AnswerDTO answerdto);
+	
+	public int insertSub(AnswerDTO answerdto);
+
+	public int update(AnswerDTO answerdto);
+
+	public int delete(int BOARDNO);
+
+	public boolean multiDelete(String[] seqList);
+}

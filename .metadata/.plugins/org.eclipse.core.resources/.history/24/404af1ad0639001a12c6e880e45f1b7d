@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="jsp09_mvc_requri">
+        <property name="context-root" value="jsp09_mvc_requri"/>
+    </wb-module>
+</project-modules>

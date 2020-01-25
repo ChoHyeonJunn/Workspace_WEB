@@ -1,0 +1,7 @@
+function load() {
+
+}
+
+function getParameter() {
+	var name = "name=" + encodeURIComponent(document.getElementById("name").value);
+}

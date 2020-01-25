@@ -1,0 +1,1 @@
+<%pageContext.forward("mvc.do"); %>

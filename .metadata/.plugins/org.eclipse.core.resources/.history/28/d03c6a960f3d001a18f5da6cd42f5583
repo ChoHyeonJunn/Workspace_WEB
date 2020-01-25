@@ -1,0 +1,11 @@
+package com.bike.biz;
+
+import java.util.List;
+
+import com.bike.dto.BIKE;
+
+public class BikeBiz {
+	public boolean multiInsert(List<BIKE> list) {
+		
+	}
+}

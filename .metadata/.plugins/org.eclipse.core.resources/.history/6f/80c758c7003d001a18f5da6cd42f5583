@@ -1,0 +1,15 @@
+$(function(){
+	
+	getJsonTest();
+})
+
+function getJsonTest(){
+	
+	$.getJSON("resources/json/bike.json", function(data){
+		$.each(data, function(key, val){
+			
+		})
+		
+	})
+	
+}

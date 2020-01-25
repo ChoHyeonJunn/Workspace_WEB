@@ -1,0 +1,60 @@
+package com.bike.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.bike.common.JDBCTemplate;
+import com.bike.dto.BIKE;
+
+public class BikeDaoImpl extends JDBCTemplate{
+	
+	public boolean multiInsert(ArrayList<BIKE> list) {
+		Connection con = getConnection();
+		PreparedStatement pstmt = null;
+
+		int res = 0;
+		int[] cnt = null;
+		String INSERT_SQL = " INSERT INTO BIKE VALUES(?,?,?,?,?,?,?) ";
+		try {
+			pstmt = con.prepareStatement(INSERT_SQL);
+			
+			for (int i = 0; i < list.size(); i++) {
+				pstmt.setString(1, list.get(i).getADDR_GU());
+				pstmt.setInt(2, list.get(i).getCONTENT_ID());
+				pstmt.setString(3, list.get(i).getCONTENT_NM());
+				pstmt.setString(4, list.get(i).getNEW_ADDR());
+				pstmt.setDouble(5, list.get(i).getCRADLE_COUNT());
+				pstmt.setString(6, list.get(i).getLONGITUDE());
+				pstmt.setString(7, list.get(i).getLATITUDE());
+				
+				pstmt.addBatch(); // 메모리에 적재 후, executeBatch() 메소드가 호출될 때 한번에 실행!
+				System.out.println("삭제할 번호 : " + seqList[i]);
+			}
+			System.out.println("3. query 준비 : " + DELETE_SQL);
+
+			cnt = pstmt.executeBatch(); // 메모리에 있던 query를 한번에 실행!, int[]로 리턴!
+
+			// [-2,-2, -3, ...]
+			for (int i = 0; i < cnt.length; i++) {
+				// -2 : 성공
+				// -3 : 실패
+				if (cnt[i] == -2) {
+					res++;
+				}
+			}
+
+			if (res == seqList.length) {
+				commit(con);
+			} else {
+				System.out.println("delete all fail");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return (res == seqList.length) ? true : false;
+		return true;
+	}
+}

@@ -1,0 +1,14 @@
+package com.bike.biz;
+
+import java.util.List;
+
+import com.bike.dao.BikeDaoImpl;
+import com.bike.dto.BIKE;
+
+public class BikeBizImpl {
+	BikeDaoImpl dao = new BikeDaoImpl();
+	public boolean multiInsert(List<BIKE> list) {
+		
+		return dao.multiInsert(list); 
+	}
+}

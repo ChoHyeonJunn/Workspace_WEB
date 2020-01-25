@@ -1,0 +1,25 @@
+package com.answer.dao;
+
+import java.util.List;
+
+import com.answer.dto.AnswerDTO;
+
+public interface AnswerDAO {
+	String SELECT_LIST_SQL = " SELECT * FROM ANSWERBOARD ORDER BY GROUPNO DESC, GROUPSEQ ";
+	String SELECT_ONE_SQL = " SELECT * FROM ANSWERBOARD WHERE BOARDNO = ? ";
+	String INSERT_SQL = " INSERT INTO MVCBOARD VALUES(MVCBOARDSEQ.NEXTVAL, ?,?,?, SYSDATE) ";
+	String UPDATE_SQL = " UPDATE MVCBOARD SET TITLE = ?, CONTENT = ? WHERE SEQ = ? ";
+	String DELETE_SQL = " DELETE FROM MVCBOARD WHERE SEQ = ? ";
+
+	public List<AnswerDTO> selectList();
+
+	public AnswerDTO selectOne(int SEQ);
+
+	public int insert(AnswerDTO mvcdto);
+
+	public int update(AnswerDTO mvcdto);
+
+	public int delete(int SEQ);
+
+	public boolean multiDelete(String[] seqList);
+}

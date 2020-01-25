@@ -1,0 +1,12 @@
+package com.bike.dto;
+
+public class BIKE {
+	private String ADDR_GU;
+	private int CONTENT_ID;	
+	private String CONTENT_NM;
+	private String NEW_ADDR;
+	
+	private int CRADLE_COUNT;
+	private int LONGITUDE;
+	private int LATITUDE;
+}

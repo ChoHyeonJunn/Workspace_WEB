@@ -1,0 +1,12 @@
+function load() {
+
+}
+
+function getParameter() {
+	var name = "name=" + encodeURIComponent(document.getElementById("name").value);
+	var kor = "kor=" + document.getElementById("kor").value;
+	var eng = "eng=" + document.getElementById("eng").value;
+	var math = "math=" + document.getElementById("math").value;
+	
+	var query = name + "&" + kor + "&" + eng + "&" + math;
+}

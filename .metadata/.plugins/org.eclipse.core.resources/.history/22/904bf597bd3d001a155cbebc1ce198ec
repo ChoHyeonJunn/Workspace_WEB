@@ -1,0 +1,57 @@
+$(function(){
+	parseJsonTest();
+})
+
+function parseJsonTest(){
+	$.getJSON("resources/json/bike.json", function(data){
+		
+		$.ajax({
+			url: "bike.do?command=second_db",
+			method: "post",
+			data: {"obj": JSON.stringify(data)},
+			success: function(msg){
+				if(msg == 1163){
+					// table에 표시하자!
+					alert(msg);
+					fillTable(data);
+					
+				}else{
+					alert("저장 실패");
+				}
+				
+			},
+			error: function(){
+				alert("통신 실패");
+			}
+		})
+	})
+}
+
+function fillTable(data){
+	$.each(data, function(key, val){
+		if(key == "DESCRIPTION"){
+			$("table").attr("border", "1px");
+			$("thead").append($("<tr>"));
+			$("thead > tr").append($("<td>").text(val.ADDR_GU));
+			$("thead > tr").append($("<td>").text(val.CONTENT_ID));
+			$("thead > tr").append($("<td>").text(val.CONTENT_NM));
+			$("thead > tr").append($("<td>").text(val.NEW_ADDR));
+			$("thead > tr").append($("<td>").text(val.CRADLE_COUNT));
+			$("thead > tr").append($("<td>").text(val.LONGITUDE));
+			$("thead > tr").append($("<td>").text(val.LATITUDE));
+		}
+		if(key = "DATA"){
+			$.each(val, function(i, v){
+				console.log(i + " : " + v)
+				$("tbody").append($("<tr>"));
+				$("tbody > tr").eq(i).append($("<td>").text(v.addr_gu));
+				$("tbody > tr").eq(i).append($("<td>").text(v.content_id));
+				$("tbody > tr").eq(i).append($("<td>").text(v.content_nm));
+				$("tbody > tr").eq(i).append($("<td>").text(v.new_addr));
+				$("tbody > tr").eq(i).append($("<td>").text(v.cradle_count));
+				$("tbody > tr").eq(i).append($("<td>").text(v.longitude));
+				$("tbody > tr").eq(i).append($("<td>").text(v.latitude));
+			})
+		}
+	})
+}

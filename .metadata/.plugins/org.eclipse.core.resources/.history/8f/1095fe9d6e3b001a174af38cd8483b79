@@ -1,0 +1,52 @@
+package com.answer.biz;
+
+import java.util.List;
+
+import com.answer.dao.AnswerDAO;
+import com.answer.dao.AnswerDAOImpl;
+import com.answer.dto.AnswerDTO;
+
+public class AnswerBizImpl implements AnswerBiz {
+
+	private AnswerDAO dao = new AnswerDAOImpl();
+
+	@Override
+	public List<AnswerDTO> selectList() {
+		return dao.selectList();
+	}
+
+	@Override
+	public AnswerDTO selectOne(int BOARDNO) {
+		return dao.selectOne(BOARDNO);
+	}
+
+	@Override
+	public int insert(AnswerDTO answerdto) {
+		return dao.insert(answerdto);
+	}
+
+	@Override
+	public int insertSub(AnswerDTO answerdto, int BOARDNO) {
+		int res = dao.updateForSub(BOARDNO);
+		if (res > 0) {
+			dao.insertSub(answerdto, BOARDNO);	
+		}
+		return 0;
+	}
+
+	@Override
+	public int update(AnswerDTO answerdto) {
+		return dao.update(answerdto);
+	}
+
+	@Override
+	public int delete(int BOARDNO) {
+		return dao.delete(BOARDNO);
+	}
+
+	@Override
+	public boolean multiDelete(String[] seqList) {
+		return dao.multiDelete(seqList);
+	}
+
+}

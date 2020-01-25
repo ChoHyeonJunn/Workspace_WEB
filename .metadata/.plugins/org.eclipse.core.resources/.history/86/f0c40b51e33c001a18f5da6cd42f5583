@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	function getParameterValues(){
+		var name = "name=" + encodeURIComponent($("#name").val());
+		var kor = "kor=" + $("#kor").val();
+		var eng = "eng=" + $("#eng").val();
+		var math = "math=" + $("#math").val();
+		var name = "name=" + encodeURIComponent($("#name").val());
+		var name = "name=" + encodeURIComponent($("#name").val());
+		
+		var name = $("input[name='name']").val();
+		var kor = $("input[name='kor']").val();
+		var eng = $("input[name='eng']").val();
+		var math = $("input[name='math']").val();
+
+	}
+</script>
+
+</head>
+<body>
+	
+	<h1>성적 처리 프로그램</h1>
+	
+	이름 : <input type="text" id="name">
+	국어 : <input type="text" id="kor">
+	영어 : <input type="text" id="eng">
+	수학 : <input type="text" id="math">
+	<input type="button" id="process" value="성적 처리"><br>
+	
+	<div id="result"></div>
+	
+</body>
+</html>

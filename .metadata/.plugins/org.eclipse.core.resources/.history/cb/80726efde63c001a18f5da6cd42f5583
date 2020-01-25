@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	function getParameterValues(){
+		// encodeURIComponent() : uri로 데이터를 전달하기 위해 문자열을 인코딩
+		/*
+
+	웹을 통해서 데이터를 전송할 때 특정 문자들은 특수한 기능으로 사용된다.
+		예를들어, http://a.com?name=egoing&job=programmer 에서
+		&job=programmer 중 '&'는 하나의 파라미터가 끝나고 다음 파라미터가 온다는 의미이다.
+		그런데 다음과 같이 job의 값에 &가 포함된다면 시스템은 job의 값을 제대로 인식할수 없게 된다.
+		http://a.com?name=egoing&job=programmer&blogger
+		이런 문제를 회피하기 위해서 다음과 같이 치환해준다.
+		http://a.com?name=egoing&job=programmer%26blogger
+		그럼 시스템에서는 %26을 &로 해석하고 의도대로 해석할 수 있게 된다.
+		이러한 처리를 이스케이핑(escaping)라고 부른다.
+		 */
+		var name = "name=" + encodeURIComponent($("#name").val());
+		var kor = "kor=" + $("#kor").val();
+		var eng = "eng=" + $("#eng").val();
+		var math = "math=" + $("#math").val();
+
+		var query = name + "&" + kor + "&" + eng + "&" + math;
+
+		return query;
+	}
+
+	$(function() {
+		$("#process").click(
+				function() {
+
+					$.ajax({
+						url : "score.cal?" + getParameterValues(),
+						dataType : "json",
+						success : function(msg) {
+							console.log(msg);
+							$("#result").html(
+									decodeURIComponent(msg.name) + "님의 총점은 "
+											+ msg.sum + "이고, 평균은 " + msg.avg
+											+ "입니다.");
+						},
+						error : function() {
+							alert("통신 실패");
+						}
+					});
+
+				})
+
+	})
+</script>
+
+</head>
+<body>
+	
+	<h1>성적 처리 프로그램</h1>
+	
+	이름 : <input type="text" id="name">
+	국어 : <input type="text" id="kor">
+	영어 : <input type="text" id="eng">
+	수학 : <input type="text" id="math">
+	<input type="button" id="process" value="성적 처리"><br>
+	
+	<div id="result"></div>
+	
+</body>
+</html>

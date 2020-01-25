@@ -1,0 +1,21 @@
+package com.answer.dto;
+
+import java.util.Date;
+
+public class answerDTO {
+	private int BOARDNO;
+	private int GROUPNO;
+	private int GROUPSEQ;
+	private int TITLETAB;
+	
+	private String TITLE;
+	private String CONTENT;
+	private String WRITER;
+	private Date REGDATE;
+	public answerDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+}

@@ -1,0 +1,14 @@
+function load() {
+	var url = getParameterValues();
+}
+
+function getParameterValues() {
+	var name = "name=" + encodeURIComponent(document.getElementById("name").value);
+	var kor = "kor=" + document.getElementById("kor").value;
+	var eng = "eng=" + document.getElementById("eng").value;
+	var math = "math=" + document.getElementById("math").value;
+	
+	var url = "score.cal?" + name + "&" + kor + "&" + eng + "&" + math;
+	
+	return url;
+}

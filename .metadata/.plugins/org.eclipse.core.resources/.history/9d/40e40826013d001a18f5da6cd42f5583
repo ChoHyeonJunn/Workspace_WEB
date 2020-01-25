@@ -1,0 +1,30 @@
+$(function(){
+	
+	getJsonTest();
+})
+
+function getJsonTest(){
+	
+	$.getJSON("resources/json/bike.json", function(data){
+		$.each(data, function(key, val){
+			if(key == "DESCRIPTION"){
+				$("table").attr("border", "1");
+				
+				$("thead").append(
+						"<tr>" + 
+							"<th>" + val.ADDR_GU + "</th>" +
+							"<th>" + val.CONTENT_ID + "</th>" +
+							"<th>" + val.CONTENT_NM + "</th>" +
+							"<th>" + val.NEW_ADDR + "</th>" +
+							"<th>" + val.CRADLE_COUNT + "</th>" +
+							"<th>" + val.LONGITUDE + "</th>" +
+							"<th>" + val.LATITUDE + "</th>" +
+						"</tr>"
+				)
+			}
+		})
+		
+		
+	})
+	
+}

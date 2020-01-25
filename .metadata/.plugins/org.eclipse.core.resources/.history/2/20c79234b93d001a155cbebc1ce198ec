@@ -1,0 +1,31 @@
+$(function(){
+	parseJsonTest();
+})
+
+function parseJsonTest(){
+	$.getJSON("resources/json/bike.json", function(data){
+		
+		$.ajax({
+			url: "bike.do?command=second_db",
+			method: "post",
+			data: {"obj": JSON.stringify(data)},
+			success: function(msg){
+				if(msg == 1163){
+					// table에 표시하자!
+					alert(msg)
+					
+				}else{
+					alert("저장 실패")
+				}
+				
+			},
+			error: function(){
+				alert("통신 실패");
+			}
+		})
+	})
+}
+
+function fillTable(data){
+	
+}

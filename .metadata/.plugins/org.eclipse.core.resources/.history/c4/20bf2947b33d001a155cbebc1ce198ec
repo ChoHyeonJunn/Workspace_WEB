@@ -1,0 +1,10 @@
+$(function(){
+	parseJsonTest();
+})
+
+function parseJsonTest(){
+	$.getJSON("resources/json/bike.json", function(data){
+		
+		
+	})
+}
