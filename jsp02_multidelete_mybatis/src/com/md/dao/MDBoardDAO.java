@@ -1,6 +1,8 @@
 package com.md.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -8,8 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.md.vo.MDBOARD;
 
 public class MDBoardDAO extends SqlMapConfig {
-	private String namespace = "muldel.";
-	
+
 	public List<MDBOARD> selectList() {
 
 		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
@@ -20,14 +21,15 @@ public class MDBoardDAO extends SqlMapConfig {
 		return list;
 	}
 
-	public List<MDBOARD> selectListList(){
+	public List<MDBOARD> selectListList() {
 		List<MDBOARD> list = null;
 		SqlSession session = null;
 		session = getSqlSessionFactory().openSession();
 		list = session.selectList("");
-		
+
 		return list;
 	}
+
 	public MDBOARD selectOne(int SEQ) {
 		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
 		SqlSession session = sqlSessionFactory.openSession();
@@ -74,14 +76,26 @@ public class MDBoardDAO extends SqlMapConfig {
 	}
 
 	public int multiDelete(String[] seqList) {
-		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
-		SqlSession session = sqlSessionFactory.openSession();
 
-		int res = session.delete("com.md.mapper.multidelete", seqList);
-		if (res > 0) {
-			session.commit();
+		int res = 0;
+
+		SqlSession session = null;
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("seqList", seqList);
+
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.delete("com.md.mapper.muldel", map);
+			if (res == seqList.length) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
 		}
-		session.close();
+
 		return res;
+
 	}
 }
