@@ -1,1 +1,0 @@
-<%pageContext.forward("con.do?command=list"); %>

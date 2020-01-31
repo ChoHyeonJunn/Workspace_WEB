@@ -7,7 +7,6 @@
 <fullyQualifiedTypeName name="com.my.dto.MyDto"/>
 <fullyQualifiedTypeName name="com.vo.BOARD"/>
 <fullyQualifiedTypeName name="java.lang.Class"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="com.common.JDBCTemplate"/>
 <fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="com.vo.MYBOARD"/>
@@ -20,7 +19,6 @@
 <fullyQualifiedTypeName name="com.login.common.JDBCTemplate"/>
 <fullyQualifiedTypeName name="com.login.dao.MyMemberDao"/>
 <fullyQualifiedTypeName name="com.login.dao.MyMemberDaoImpl"/>
-<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="com.login.dto.MYMEMBER"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
@@ -29,10 +27,8 @@
 <fullyQualifiedTypeName name="com.mvc.dto.MVCDto"/>
 <fullyQualifiedTypeName name="com.mvc.biz.MVCBiz"/>
 <fullyQualifiedTypeName name="com.mvc.biz.MVCBizImpl"/>
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="com.test.dto.Score"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="com.answer.common.JDBCTemplate"/>
 <fullyQualifiedTypeName name="com.answer.dao.AnswerDAO"/>
 <fullyQualifiedTypeName name="com.answer.dao.AnswerDAOImpl"/>
@@ -47,4 +43,12 @@
 <fullyQualifiedTypeName name="com.bike.dto.BIKE"/>
 <fullyQualifiedTypeName name="com.bike.dao.BikeDaoImpl"/>
 <fullyQualifiedTypeName name="com.bike.biz.BikeBizImpl"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="com.cal.dao.Util"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="com.cal.common.JDBCTemplate"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="com.cal.dao.CalDao"/>
+<fullyQualifiedTypeName name="com.cal.dto.CALBOARD"/>
 </qualifiedTypeNameHistroy>
